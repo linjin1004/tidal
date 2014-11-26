@@ -3,7 +3,6 @@
 
     <string name="app_name">Taiwan Tidal</string>
     <string name="action_settings">Settings</string>
-
     <string name="keelung">Keelung City</string>
     <string name="new_taipei">New Taipei City</string>
     <string name="taoyuan">Taoyuan County</string>
@@ -40,13 +39,13 @@
     <string name="bali">Bali</string>
     <string name="linkou">Linkou</string>
 
-    <!-- taoyuan_-->
+    <!-- taoyuan_ -->
     <string name="luzhu">Luzhu</string>
     <string name="dayuan">Dayuan</string>
     <string name="guanyin">Guanyin</string>
     <string name="xinwu">Xinwu</string>
 
-    <!-- hsinchu county-->
+    <!-- hsinchu county -->
     <string name="xinfeng">Xinfeng</string>
     <string name="zhubei">Zhubei</string>
 
@@ -167,5 +166,7 @@
     <string name="xiyu">Xiyu</string>
     <string name="wang_an">Wang’an</string>
     <string name="qimei">Qimei</string>
+    <string name="title_activity_tidal">TidalActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

@@ -2,6 +2,7 @@ package com.tada.taiwantidal;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.internal.widget.AdapterViewCompat;
@@ -37,6 +38,7 @@ public class MainActivity extends ActionBarActivity {
     ListView townsListView ;
     String[] cities;
     String[] towns;
+    String[] tidalIds;
     String cityName;
     String townName;
     TidalIdChart tidalIdChart;
@@ -54,7 +56,6 @@ public class MainActivity extends ActionBarActivity {
         try {
             tidalIdChart = new TidalIdChart();
             allPlaces = tidalIdChart.getAllPalces();
-            Log.i("TaiwanTidal", allPlaces.toString());
             cities = new String[allPlaces.length()];
             for(int i = 0; i < allPlaces.length(); i ++) {
                 JSONObject place = allPlaces.getJSONObject(i);
@@ -64,9 +65,6 @@ public class MainActivity extends ActionBarActivity {
         } catch (Exception e) {
             Log.i("TaiwanTidal", "tidalIdChart.getAllPalces error:" + e.toString());
         }
-
-        //int townsArrayID = getResources().getIdentifier("towns_array_names", "array", this.getPackageName());
-        //townsArrayNames = getResources().getStringArray(townsArrayID);
 
         citiesListView = (ListView)findViewById(R.id.citiesList);
         ArrayAdapter<String> citiesAdapter = new ArrayAdapter<String>(this,
@@ -82,15 +80,15 @@ public class MainActivity extends ActionBarActivity {
 
                 cityName = cities[position];
 
-         //       int townsID = getResources().getIdentifier(townsArrayNames[position], "array", MainActivity.this.getPackageName());
-         //       final String[] townsArray = getResources().getStringArray(townsID);
                 try {
                     JSONArray townsArray = new JSONArray();
                     townsArray = tidalIdChart.getTowns(position);
                     towns = new String[townsArray.length()];
+                    tidalIds = new String[townsArray.length()];
                     for(int i = 0; i < townsArray.length(); i ++) {
                         JSONObject place = townsArray.getJSONObject(i);
                         String townName = place.getString("townName");
+                        tidalIds[i] = place.getString("id");
                         towns[i] = getString(getResources().getIdentifier(townName, "string", getPackageName()));
                     }
                 } catch (Exception e) {
@@ -105,28 +103,20 @@ public class MainActivity extends ActionBarActivity {
                     public void onItemClick(AdapterView<?> parent, View view,
                                             int position, long id) {
                         townName = towns[position];
-                        getTidalInfo();
+                        getTidalInfo(tidalIds[position]);
                     }
                 });
             }
         });
-        /*
-        Button goButton = (Button) findViewById(R.id.goButton);
-        goButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), cityName + townName, Toast.LENGTH_LONG)
-                       .show();
-            }
-        });*/
-
-
 
     }
 
-    public void getTidalInfo(){
-        //Toast.makeText(getApplicationContext(), cityName + townName, Toast.LENGTH_LONG)
+    public void getTidalInfo(String tidalId){
+        //Toast.makeText(getApplicationContext(), cityName + " " + townName + " " + tidalId, Toast.LENGTH_LONG)
         //        .show();
+        Intent mIntent = new Intent(this, TidalActivity.class);
+        mIntent.putExtra("tidalId", tidalId);
+        startActivity(mIntent);
     }
 
     @Override
