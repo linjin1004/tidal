@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Taiwan Tidal</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="keelung">Keelung City</string>
+    <string name="new_taipei">New Taipei City</string>
+    <string name="taoyuan">Taoyuan County</string>
+    <string name="hsinchu_county">Hsinchu County</string>
+    <string name="hsinchu_city">Hsinchu City</string>
+    <string name="miaoli">Miaoli County</string>
+    <string name="taichung">Taichung City</string>
+    <string name="changhua">Changhua County</string>
+    <string name="yunlin">Yunlin County</string>
+    <string name="chiayi">Chiayi County</string>
+    <string name="tainan">Tainan City</string>
+    <string name="kaohsiung">Kaohsiung City</string>
+    <string name="pingtung">Pingtung County</string>
+    <string name="taitung">Taitung County</string>
+    <string name="hualien">Hualien County</string>
+    <string name="yilan">Yilan County</string>
+    <string name="lienchiang">Lienchiang County</string>
+    <string name="kinmen">Kinmen County</string>
+    <string name="penghu">Penghu County</string>
+
+    <!-- keelung -->
+    <string name="zhongzheng">Zhongzheng</string>
+    <string name="zhongshan">Zhongshan</string>
+    <string name="anle">Anle</string>
+
+    <!-- new_taipei -->
+    <string name="gongliao">Gongliao</string>
+    <string name="ruifang">Ruifang</string>
+    <string name="wanli">Wanli</string>
+    <string name="jinshan">Jinshan</string>
+    <string name="shimen">Shimen</string>
+    <string name="sanzhi">Sanzhi</string>
+    <string name="tamsui">Tamsui</string>
+    <string name="bali">Bali</string>
+    <string name="linkou">Linkou</string>
+
+    <!-- taoyuan_-->
+    <string name="luzhu">Luzhu</string>
+    <string name="dayuan">Dayuan</string>
+    <string name="guanyin">Guanyin</string>
+    <string name="xinwu">Xinwu</string>
+
+    <!-- hsinchu county-->
+    <string name="xinfeng">Xinfeng</string>
+    <string name="zhubei">Zhubei</string>
+
+    <!-- hsinchu city -->
+    <string name="north">North</string>
+    <string name="xiangshan">Xiangshan</string>
+
+    <!-- miaoli -->
+    <string name="zhunan">Zhunan</string>
+    <string name="houlong">Houlong</string>
+    <string name="tongxiao">Tongxiao</string>
+    <string name="yuanli">Yuanli</string>
+
+    <!-- taichung -->
+    <string name="dajia">Dajia</string>
+    <string name="da_an">Da’an</string>
+    <string name="qingshui">Qingshui</string>
+    <string name="wuqi">Wuqi</string>
+    <string name="longjing">Longjing</string>
+
+    <!-- changhua -->
+    <string name="shengang">Shengang</string>
+    <string name="xianxi">Xianxi</string>
+    <string name="lukang">Lukang</string>
+    <string name="fuxing">Fuxing</string>
+    <string name="fangyuan">Fangyuan</string>
+    <string name="dacheng">Dacheng</string>
+
+    <!-- yunlin -->
+    <string name="mailiao">Mailiao</string>
+    <string name="taixi">Taixi</string>
+    <string name="sihu">Sihu</string>
+    <string name="kouhu">Kouhu</string>
+
+    <!-- chiayi -->
+    <string name="dongshi">Dongshi</string>
+    <string name="budai">Budai</string>
+
+    <!-- tainan -->
+    <string name="beimen">Beimen</string>
+    <string name="jiangjun">Jiangjun</string>
+    <string name="qigu">Qigu</string>
+    <string name="annan">Annan</string>
+    <string name="anping">Anping</string>
+    <string name="south">South</string>
+
+    <!-- kaohsiung -->
+    <string name="qieding">Qieding</string>
+    <string name="yong_an">Yong’an</string>
+    <string name="mituo">Mituo</string>
+    <string name="ziguan">Ziguan</string>
+    <string name="nanzi">Nanzi</string>
+    <string name="zuoying">Zuoying</string>
+    <string name="gushan">Gushan</string>
+    <string name="qijin">Qijin</string>
+    <string name="qianzhen">Qianzhen</string>
+    <string name="xiaogang">Xiaogang</string>
+    <string name="linyuan">Linyuan</string>
+
+    <!-- pingtung -->
+    <string name="xinyuan">Xinyuan</string>
+    <string name="donggang">Donggang</string>
+    <string name="liuqiu">Liuqiu</string>
+    <string name="linbian">Linbian</string>
+    <string name="jiadong">Jiadong</string>
+    <string name="fangliao">Fangliao</string>
+    <string name="fangshan">Fangshan</string>
+    <string name="checheng">Checheng</string>
+    <string name="manzhou">Manzhou</string>
+    <string name="mudan">Mudan</string>
+    <string name="hengchun">Hengchun</string>
+
+    <!-- taitung -->
+    <string name="beinan">Beinan</string>
+    <string name="donghe">Donghe</string>
+    <string name="chenggong">Chenggong</string>
+    <string name="taitung_taitung">Taitung</string>
+    <string name="changbin">Changbin</string>
+    <string name="daren">Daren</string>
+    <string name="dawu">Dawu</string>
+    <string name="taimali">Taimali</string>
+    <string name="ludao">Ludao</string>
+    <string name="lanyu">Lanyu</string>
+
+    <!-- hualien -->
+    <string name="fengbin">Fengbin</string>
+    <string name="shoufeng">Shoufeng</string>
+    <string name="ji_an">Ji’an</string>
+    <string name="hualien_hualien">Hualien</string>
+    <string name="xincheng">Xincheng</string>
+    <string name="xiulin">Xiulin</string>
+
+    <!-- yilan -->
+    <string name="nan_ao">Nan’ao</string>
+    <string name="su_ao">Su’ao</string>
+    <string name="wujie">Wujie</string>
+    <string name="zhuangwei">Zhuangwei</string>
+    <string name="toucheng">Toucheng</string>
+
+    <!-- lienchiang -->
+    <string name="dongyin">Dongyin</string>
+    <string name="beigan">Beigan</string>
+    <string name="nangan">Nangan</string>
+    <string name="juguang">Juguang</string>
+
+    <!-- kinmen -->
+    <string name="jinning">Jinning</string>
+    <string name="jincheng">Jincheng</string>
+    <string name="lieyu">Lieyu</string>
+    <string name="jinhu">Jinhu</string>
+    <string name="jinsha">Jinsha</string>
+    <string name="wuqiu">Wuqiu</string>
+
+    <!-- penghu -->
+    <string name="magong">Magong</string>
+    <string name="huxi">Huxi</string>
+    <string name="baisha">Baisha</string>
+    <string name="xiyu">Xiyu</string>
+    <string name="wang_an">Wang’an</string>
+    <string name="qimei">Qimei</string>
+
+</resources>
