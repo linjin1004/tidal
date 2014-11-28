@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.internal.widget.AdapterViewCompat;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -12,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,14 +36,16 @@ import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity {
 
+    private DrawerLayout drawer;
+
     JSONArray allPlaces = new JSONArray();
-    ListView citiesListView ;
-    ListView townsListView ;
+    //ListView citiesListView ;
+    //ListView townsListView ;
     String[] cities;
     String[] towns;
     String[] tidalIds;
-    String cityName;
-    String townName;
+    //String cityName;
+    //String townName;
     TidalIdChart tidalIdChart;
 
     MyAdapter townAdapter;
@@ -55,7 +59,11 @@ public class MainActivity extends ActionBarActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            toolbar.setNavigationIcon(R.drawable.ic_list_grey);
         }
+        drawer = (DrawerLayout) findViewById(R.id.drawer);
+        //drawer.setDrawerShadow(R.drawable.drawer_shadow, Gravity.START);
 
         try {
             tidalIdChart = new TidalIdChart();
@@ -184,7 +192,7 @@ public class MainActivity extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-    /*
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -195,10 +203,13 @@ public class MainActivity extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }else if(id == android.R.id.home){
+            drawer.openDrawer(Gravity.START);
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         private String[] mDataset;
