@@ -166,7 +166,15 @@
     <string name="xiyu">Xiyu</string>
     <string name="wang_an">Wang’an</string>
     <string name="qimei">Qimei</string>
+
+    <!-- drawer list-->
+    <string-array name="drawer_list">
+        <item name="favorite_places">Favorite Places</item>
+        <item name="all_places">All Places</item>
+    </string-array>
+
     <string name="title_activity_tidal">TidalActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="action_fav">Favorite</string>
 
 </resources>

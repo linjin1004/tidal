@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
     <application
+        android:name="com.tada.taiwantidal.TidalUtil"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -21,6 +22,10 @@
         <activity
             android:name="com.tada.taiwantidal.TidalActivity"
             android:label="@string/title_activity_tidal" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tada.taiwantidal.MainActivity" />
+
         </activity>
     </application>
 

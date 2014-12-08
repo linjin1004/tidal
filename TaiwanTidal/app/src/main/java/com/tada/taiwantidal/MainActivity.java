@@ -1,13 +1,10 @@
 package com.tada.taiwantidal;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.internal.widget.AdapterViewCompat;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -20,18 +17,10 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -44,9 +33,8 @@ public class MainActivity extends ActionBarActivity {
     String[] cities;
     String[] towns;
     String[] tidalIds;
-    //String cityName;
-    //String townName;
-    TidalIdChart tidalIdChart;
+    String selectedCity = "";
+    String selectedTown = "";
 
     MyAdapter townAdapter;
     RecyclerView townsRecyclerView;
@@ -66,8 +54,7 @@ public class MainActivity extends ActionBarActivity {
         //drawer.setDrawerShadow(R.drawable.drawer_shadow, Gravity.START);
 
         try {
-            tidalIdChart = new TidalIdChart();
-            allPlaces = tidalIdChart.getAllPalces();
+            allPlaces = ((TidalUtil)getApplication()).getAllPalces();
             cities = new String[allPlaces.length()];
             for(int i = 0; i < allPlaces.length(); i ++) {
                 JSONObject place = allPlaces.getJSONObject(i);
@@ -93,8 +80,9 @@ public class MainActivity extends ActionBarActivity {
         citiesRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getApplicationContext(), new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
+                        selectedCity = cities[position];
                         try {
-                            JSONArray townsArray = tidalIdChart.getTowns(position);
+                            JSONArray townsArray = ((TidalUtil)getApplication()).getTowns(position);
                             towns = new String[townsArray.length()];
                             tidalIds = new String[townsArray.length()];
                             for(int i = 0; i < townsArray.length(); i ++) {
@@ -127,6 +115,7 @@ public class MainActivity extends ActionBarActivity {
         townsRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getApplicationContext(), new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
+                        selectedTown = towns[position];
                         getTidalInfo(tidalIds[position]);
                     }
                 })
@@ -179,10 +168,10 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void getTidalInfo(String tidalId){
-        //Toast.makeText(getApplicationContext(), cityName + " " + townName + " " + tidalId, Toast.LENGTH_LONG)
-        //        .show();
         Intent mIntent = new Intent(this, TidalActivity.class);
         mIntent.putExtra("tidalId", tidalId);
+        mIntent.putExtra("cityNname", selectedCity);
+        mIntent.putExtra("townName", selectedTown);
         startActivity(mIntent);
     }
 
