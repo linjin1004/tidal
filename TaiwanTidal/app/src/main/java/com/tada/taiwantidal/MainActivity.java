@@ -170,7 +170,7 @@ public class MainActivity extends ActionBarActivity {
     public void getTidalInfo(String tidalId){
         Intent mIntent = new Intent(this, TidalActivity.class);
         mIntent.putExtra("tidalId", tidalId);
-        mIntent.putExtra("cityNname", selectedCity);
+        mIntent.putExtra("cityName", selectedCity);
         mIntent.putExtra("townName", selectedTown);
         startActivity(mIntent);
     }
