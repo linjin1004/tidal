@@ -1,6 +1,7 @@
 package com.tada.taiwantidal;
 
 import android.app.Application;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 
@@ -20,10 +21,19 @@ public class TidalUtil extends Application {
 
     private static JSONArray allPlacesJSONArray = new JSONArray();
 
+    //for favorites
+    final String MY_PREFS_NAME = "my_tidal";
+    final String FAVORITES = "favorites";
+    SharedPreferences prefs;
+    SharedPreferences.Editor prefsEditor;
+
     @Override
     public void onCreate()
     {
         super.onCreate();
+
+        prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        prefsEditor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
 
         Log.i("tidal chart", "create");
         JSONObject cityJSONObject = new JSONObject();
@@ -627,5 +637,90 @@ public class TidalUtil extends Application {
             Log.i("TaiwanTidal", "tidalIdChart.getTowns error:" + e.toString());
         }
         return townsArray;
+    }
+
+    public boolean addFav(String tidalId, String town, String city) {
+        boolean result = true;
+
+        String favoritesString = prefs.getString("favorites", null);
+        if (favoritesString != null) {
+            if(!searchFav(tidalId)) {
+                try {
+                    JSONArray favoritesArray = new JSONArray(favoritesString);
+                    JSONObject favoriteObject = new JSONObject();
+                    favoriteObject.put(townName,town);
+                    favoriteObject.put(cityName,city);
+                    favoriteObject.put("tidalId",tidalId);
+                    favoritesArray.put(favoriteObject);
+                    prefsEditor.putString(FAVORITES, favoritesArray.toString());
+                    prefsEditor.commit();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    result = false;
+                }
+            }
+        }else{
+            try {
+                JSONArray favoritesArray = new JSONArray();
+                JSONObject favoriteObject = new JSONObject();
+                favoriteObject.put(townName,town);
+                favoriteObject.put(cityName,city);
+                favoriteObject.put("tidalId",tidalId);
+                favoritesArray.put(favoriteObject);
+                prefsEditor.putString(FAVORITES, favoritesArray.toString());
+                prefsEditor.commit();
+            } catch (JSONException e) {
+                e.printStackTrace();
+                result = false;
+            }
+        }
+        return result;
+    }
+    public boolean removeFav(String tidalId){
+        boolean result = true;
+
+        String favoritesString = prefs.getString(FAVORITES, null);
+        if (favoritesString != null) {
+            try {
+                JSONArray favoritesArray = new JSONArray(favoritesString);
+                for(int i=0; i < favoritesArray.length(); i++){
+                    JSONObject favoriteObject = new JSONObject();
+                    favoriteObject = favoritesArray.getJSONObject(i);
+                    if(favoriteObject.getString("tidalId").equals(tidalId)){
+                        favoritesArray.remove(i);
+                        prefsEditor.putString(FAVORITES, favoritesArray.toString());
+                        prefsEditor.commit();
+                    }
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                result = false;
+            }
+        }
+
+        return result;
+    }
+    public boolean searchFav(String tidalId){
+        boolean result = false;
+
+        String favoritesString = prefs.getString(FAVORITES, null);
+        if (favoritesString != null) {
+            try {
+                JSONArray favoritesArray = new JSONArray(favoritesString);
+                for(int i=0; i < favoritesArray.length(); i++){
+                    JSONObject favoriteObject = new JSONObject();
+                    favoriteObject = favoritesArray.getJSONObject(i);
+                    if(favoriteObject.getString("tidalId").equals(tidalId)){
+                        result = true;
+                    }
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return result;
     }
 }
